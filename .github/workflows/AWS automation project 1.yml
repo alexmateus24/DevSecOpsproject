@@ -1,4 +1,5 @@
-name: AWS Automation Project 1.
+name: AWS Automation Project 1
+uses: actions/AWS automation project 1
 
 on:
   push:
