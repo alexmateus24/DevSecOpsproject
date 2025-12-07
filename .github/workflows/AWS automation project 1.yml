@@ -7,7 +7,6 @@ on:
 
 jobs:
   deploy-and-scan:
-    name: Deploy WordPress on EC2 and IaC Scans
     runs-on: ubuntu-latest
 
     steps:
@@ -28,10 +27,13 @@ jobs:
 
       - name: Terraform Init
         run: terraform init
+        working-directory: ${{ github.workspace }}
 
       - name: Terraform Apply
         run: terraform apply -auto-approve
+        working-directory: ${{ github.workspace }}
 
       - name: Get WordPress Instance IP
         id: get_ip
         run: echo "ip_address=$(terraform output -json instance_public_ip | jq -r '.')" >> $GITHUB_OUTPUT
+        working-directory: ${{ github.workspace }}
