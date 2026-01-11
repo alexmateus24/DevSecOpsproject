@@ -1,9 +1,11 @@
 name: SAST Scan Project 3
 
+permissions:
+  contents: read
+  security-events: write
+
 on:
   push:
-    branches: [ main ]
-  pull_request:
     branches: [ main ]
 
 jobs:
@@ -15,13 +17,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install dependencies  
-        uses: actions/setup-python@v3
-        with:
-          python-version: 3.x
-          
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3
+        with:
+          languages: python
 
       - name: Run CodeQL Analysis
         uses: github/codeql-action/analyze@v3
