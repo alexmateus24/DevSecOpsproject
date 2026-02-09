@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Pull Docker Image
-        run: docker pull alexmateus/dockerhub:wordtoday
+        run: docker pull alexmateus/feb/dockerhub:wordtoday
 
       - name: Install Trivy
         run: |
@@ -45,7 +45,7 @@ jobs:
       with:
         scan-type: 'image'
         scanners: 'vuln'
-        image-ref: alexmateus/dockerhub:wordtoday
+        image-ref: alexmateus/feb/dockerhub:wordtoday
         scan-ref: '.'
         hide-progress: false
         format: 'table'
